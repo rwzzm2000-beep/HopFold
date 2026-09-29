@@ -1,0 +1,7 @@
+{
+  "dataset": "toy-graph",
+  "nodes": 4,
+  "features": 2,
+  "carrier_bytes": 8,
+  "note": "Smoke test only; not a paper benchmark."
+}
