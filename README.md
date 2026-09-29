@@ -1,6 +1,6 @@
 # HopFold
 
-This is a **small public reference repository** for the HopFold paper. It is intentionally not the full internal research codebase: the repository exposes the core paired-carrier idea and a tiny smoke example, while training orchestration, GPU kernels, preprocessing pipelines, machine-specific configuration, and complete benchmark logs are omitted.
+This is a repository for the HopFold paper. It is intentionally not the full internal research codebase: the repository exposes the core paired-carrier idea and a tiny smoke example, while training orchestration, GPU kernels, preprocessing pipelines, machine-specific configuration, and complete benchmark logs are omitted.
 
 > The code is provided to make the method identifiable and inspectable. It is not intended to reproduce all paper numbers directly.
 
