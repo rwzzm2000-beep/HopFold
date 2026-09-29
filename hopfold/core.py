@@ -48,7 +48,15 @@ def build_carrier(x: np.ndarray, edges: np.ndarray) -> Carrier:
     x = np.asarray(x, dtype=np.float32)
     neighbor_mean = aggregate_neighbors(x, edges)
     codes, self_centers = _quantize(x)
-    _, neighbor_centers = _quantize(neighbor_mean)
+    # Pair the same self-feature code with the neighbor statistic observed on
+    # the same nodes. This is the key idea: one code addresses two values.
+    neighbor_centers = np.empty_like(self_centers)
+    for channel in range(x.shape[1]):
+        for code in range(256):
+            mask = codes[:, channel] == code
+            neighbor_centers[channel, code] = (
+                neighbor_mean[mask, channel].mean() if np.any(mask) else 0.0
+            )
     codebook = np.stack([self_centers, neighbor_centers], axis=-1).astype(np.float32)
     return Carrier(codes=codes, codebook=codebook)
 
